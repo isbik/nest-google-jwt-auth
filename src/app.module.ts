@@ -5,8 +5,9 @@ import { join } from 'path';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
+import { GoogleModule } from './google/google.module';
+import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -31,6 +32,7 @@ import { UserModule } from './user/user.module';
     ProductModule,
     AuthModule,
     UserModule,
+    GoogleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
