@@ -7,7 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { GoogleModule } from './google/google.module';
-import { ProductModule } from './product/product.module';
+import { PostModule } from './post/post.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -29,10 +29,10 @@ import { UserModule } from './user/user.module';
         synchronize: true,
       }),
     }),
-    ProductModule,
     AuthModule,
     UserModule,
     GoogleModule,
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],

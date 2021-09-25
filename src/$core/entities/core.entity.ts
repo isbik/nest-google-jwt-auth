@@ -1,24 +1,12 @@
 import {
-  Column,
   CreateDateColumn,
-  Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
-export class Product {
-  @PrimaryGeneratedColumn()
+export class CoreEntity {
+  @PrimaryGeneratedColumn('uuid')
   id: number;
-
-  @Column()
-  name: string;
-
-  @Column()
-  price: number;
-
-  @Column({ default: null })
-  owner_id: number;
 
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;
