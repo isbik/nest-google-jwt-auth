@@ -11,6 +11,7 @@ import {
 import { AuthUser } from '../$core/decorators/auth-user.decorator';
 import { AuthGuard } from '../$core/guards/jwt.guard';
 import { OptionalUserGuard } from '../$core/guards/optional-user.guard';
+import { IAuthUser } from '../$core/types/AuthUser';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostService } from './post.service';
@@ -21,22 +22,19 @@ export class PostController {
 
   @Post()
   @UseGuards(AuthGuard)
-  create(
-    @Body() createPostDto: CreatePostDto,
-    @AuthUser() user: { id: string },
-  ) {
+  create(@Body() createPostDto: CreatePostDto, @AuthUser() user: IAuthUser) {
     return this.postService.create(createPostDto, user.id);
   }
 
   @Get()
   @UseGuards(OptionalUserGuard)
-  findAll(@AuthUser() user: { id: string }) {
+  findAll(@AuthUser() user: IAuthUser) {
     return this.postService.findAll(user.id);
   }
 
   @Get(':id')
   @UseGuards(OptionalUserGuard)
-  findOne(@Param('id') id: string, @AuthUser() user: { id: string }) {
+  findOne(@Param('id') id: string, @AuthUser() user: IAuthUser) {
     console.log('user: ', user);
     return this.postService.findOne(+id);
   }

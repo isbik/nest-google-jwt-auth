@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { genSaltSync } from 'bcryptjs';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from '../user/user.service';
 import { GoogleService } from './google.service';
@@ -31,7 +30,6 @@ export class GoogleController {
 
     const newUser = await this.userService.create({
       email,
-      password: genSaltSync(5),
     });
 
     return this.authService.login({ id: newUser.id, email: email });
